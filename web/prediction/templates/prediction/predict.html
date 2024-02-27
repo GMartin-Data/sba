@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static widget_tweaks %}
+
+{% block content %}
+
+{% comment %} <form action="." method="post">
+
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="prediction">
+
+</form> {% endcomment %}
+
+<section class="bg-gray-50 dark:bg-gray-900 py-10">
+    <div class="flex flex-col items-center justify-center gap-6 mb-6 md:grid-cols-2 focus:ring-green-600 focus:border-green-600">
+
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-2xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div class="flex flex-col items-center justify-self-center justify-center justify-items-center content-center items-center self-center">
+                <a href="#" class="mb-6 font-semibold dark:text-white text-center text-white">
+                    {% comment %} <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"> {% endcomment %}
+                    {% include "includes/logo_sba.html"  %}</a>
+                
+        <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl dark:text-white text-center text-sba-dark-blue ">
+            Loan Repayment Simulation
+                </h1></div>
+                <form class="space-y-4 md:space-y-6" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label for="State" class="block mb-2 text-sm font-medium dark:text-white text-sba-dark-blue">Select your state : </label>
+                        {{form.State|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:State"}}
+                    </div>
+                    <div>
+                        <label for="Bank" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Type the name of your Bank : </label>
+                        {{form.Bank|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"|attr:"placeholder:Bank"}}
+                    </div>
+
+                    <div>
+                        <label for="BankState" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select the state of your bank : </label>
+                        {{form.BankState|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:BankState"}}
+                    </div>
+                    <div>
+                        <label for="NAICS" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select your business sector : </label>
+                        {{form.NAICS|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NAICS"}}
+                    </div>
+                    <div>
+                        <label for="Term" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select the number of months : </label>
+                        {{form.Term|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-text-sba-dark-blue focus:ring-2 focus:ring-text-sba-dark-blue focus:border-focus:outline-none focus:ring-2 focus:ring-text-sba-dark-blue block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Term"}}
+                    </div>
+                    <div>
+                        <label for="NewExist" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company new?</label>
+                        {{form.NewExist|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NewExist"}}
+                    </div>
+                    <div>
+                        <label for="NoEmp" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many employees work in your company?</label>
+                        {{form.NoEmp|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NoEmp"}}
+                    </div>
+                    <div>
+                        <label for="CreateJob" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many jobs do you plan to create?</label>
+                        {{form.CreateJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:CreateJob"}}
+                    </div>
+                    <div>
+                        <label for="RetainedJob" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many employees do you plan to keep?</label>
+                        {{form.RetainedJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RetainedJob"}}
+                    </div>
+                    <div>
+                        <label for="Franchise" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company franchised?</label>
+                        {{form.Franchise|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Franchise"}}
+                    </div>
+                    <div>
+                        <label for="UrbanRural" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company's geographical situation urban or rural?</label>
+                        {{form.UrbanRural|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:UrbanRural"}}
+                    </div>
+                    <div>
+                        <label for="RevLineCr" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your credit revolving?</label>
+                        {{form.RevLineCr|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RevLineCr"}}
+                    </div>
+                    <div>
+                        <label for="LowDoc" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Are you part of the LowDoc program?</label>
+                        {{form.LowDoc|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:LowDoc"}}
+                    </div>
+                    <div>
+                        <label for="GrAppv" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Enter the gross amount of loan approved by bank</label>
+                        {{form.GrAppv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:GrAppv"}}
+                    </div>
+                    <div>
+                        <label for="Sba_Appv" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Enter the gross amount of loan approved by SBA</label>
+                        {{form.Sba_Appv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Sba_Appv"}}
+                    </div>
+                    <div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full text-white  bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><h1 class="text-m font-bold leading-tight tracking-tight md:text-xl dark:text-white text-center text-sba-dark-blue ">Predict</h1></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
