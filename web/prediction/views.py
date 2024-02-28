@@ -21,9 +21,7 @@ def predict_api_page(request):
         # Check whether it's valid or not
         if form.is_valid():
             form.save()
-            payload= json.dumps(form.cleaned_data)
-            print(form.cleaned_data)
-            
+
             regions = {
                 "AL": "Southeast",
                 "AK": "Northwest",
@@ -96,29 +94,30 @@ def predict_api_page(request):
         
 
             formulaire = form.cleaned_data
-            print(regions[formulaire["state"]])
-            print(True) if formulaire["state"] == formulaire["bank_state"] else print(False)
+            print(regions[formulaire["State"]])
+            print(True) if formulaire["State"] == formulaire["BankState"] else print(False)
 
             date = datetime.datetime.now()
 
             new_info = {
-                "Region" : regions[formulaire["state"]],
-                "SameState" : True if formulaire["state"] == formulaire["bank_state"] else False,
-                "Year": date.year,
-                "Month" : date.month,
-                "Day" : date.day,
-                "DayOfWeek" : date.weekday(),
+                "Region" : regions[formulaire["State"]],
+                "SameState" : True if formulaire["State"] == formulaire["BankState"] else False,
+                "ApprovalMonth" : date.month,
+                "ApprovalDoW" : date.weekday(),
                 "Recession" : is_year_in_recession(date.year)
                 }
             formulaire.update(new_info)
-            formulaire = {key.title(): value for key, value in formulaire.items()}
             print(formulaire)
+
+            payload = json.dumps(formulaire)
             
             try:
-                json_response = session.post(url, data=formulaire).json()
-                print(json_response)
+                response = session.post(url, data=payload)
+                data = json.loads(response.text)
+                print(response.text)
+                print(data)
                 return render(request, "prediction/predict.html",
-                              context={"form": form, "data": json_response})
+                              context={"form": form, "data": data})
             except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
                 return render(request, "main/predict_api_page.html",
                             context={"form": form, "error": f"{type(e)}: {e}"})

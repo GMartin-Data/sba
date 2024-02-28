@@ -8,7 +8,6 @@ from model_utils import load_model, predict
 app = FastAPI()
 
 class FeaturesInput(BaseModel):
-    City: str
     State: str
     Region: str
     Bank: str
