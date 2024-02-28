@@ -10,24 +10,64 @@ from .forms import CustomUserCreationForm
 # import pandas as pd
 # import plotly.express as px 
 # import plotly.offline as py
-
+    
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
+from .forms import CustomUserCreationForm
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from .models import User
+from django.core.mail import send_mail
+from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect
+from .models import User
 
 class SignupPage(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
-def sign_up(request):
-    if request.method == 'POST':
-        form = SignupPage(request.POST)
-        if form.is_valid():
-            form.save()
-            # Redirection après une inscription réussie
-            return redirect('success_page')
-    else:
-        form = CustomUserCreationForm()
+    def form_valid(self, form):
+        # Enregistrer l'utilisateur
+        self.object = form.save()
+        # Envoyer un e-mail d'approbation à l'administrateur
+        send_approval_request_email(self.object)
+        return redirect(self.get_success_url())
     
-    return render(request, 'sign_up.html', {'form': form})
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
+
+def signup(request):
+    if request.method == 'POST':
+        # Traitement du formulaire d'inscription
+        # Envoyer l'e-mail d'activation
+        subject = 'Activation de compte'
+        message = 'Veuillez cliquer sur le lien suivant pour activer votre compte : http://example.com/activation/'
+        sender = settings.EMAIL_HOST_USER
+        recipient = request.POST.get('email')
+        
+        send_mail(subject, message, sender, [recipient])
+        return render(request, 'signup_success.html')
+    else:
+        return render(request, 'signup_form.html')
+
+
+def send_approval_request_email(new_user):
+    subject = "Demande d'approbation d'inscription"
+    message = f"Un nouvel utilisateur, {new_user.username}, a demandé à s'inscrire. Veuillez approuver ou rejeter cette demande."
+    approval_link = reverse('approve_user', args=[new_user.id])  # Assurez-vous d'avoir une vue et un URL correspondant
+    message += f"<Cliquez ici pour approuver>{approval_link}"
+    send_mail(subject, message, 'from@example.com', ['admin@example.com'])
+
+def approve_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user.is_approved = True
+    user.save()
+    # Vous pouvez ajouter ici une notification par email à l'utilisateur pour lui dire qu'il a été approuvé
+    return redirect('admin_dashboard')  # Redirigez vers la page souhaitée après l'approbation
+
 
 
 def home(request):
