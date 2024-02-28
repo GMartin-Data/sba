@@ -19,6 +19,4 @@ class LoanApplication(models.Model):
     RevLineCr = models.CharField(max_length=7, choices=RevLineCr.choices(), null=False, blank=False)
     LowDoc = models.CharField(max_length=1, choices=YesNo.choices(), null=False, blank=False)
     GrAppv = models.FloatField(null=False, blank=False)
-    Sba_Appv = models.FloatField(null=False, blank=False)
-
-
+    SBA_Appv = models.FloatField(null=False, blank=False)
