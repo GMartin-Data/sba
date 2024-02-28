@@ -7,6 +7,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("about/", views.about, name="about"),
     path("signup/", views.SignupPage.as_view(), name="signup"),
+    path('approve/<int:user_id>/', views.approve_user, name='approve_user'),  # Définir l'URL pour la vue approve_user
     path("special/", views.special_page, name="special"),
     path('predict/', include('prediction.urls'), name="pred"),
     path('eda/', views.eda, name="eda"),
