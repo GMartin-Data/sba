@@ -10,7 +10,7 @@ from .forms import LoanApplicationForm
 
 @login_required
 def predict_api_page(request):
-    url = "http://127.0.0.1:8080/predict"
+    url = "http://api:8080/predict"
     session = Session()
 
     # TEMPLATE TO BE ADAPTED
@@ -119,7 +119,7 @@ def predict_api_page(request):
                 return render(request, "prediction/predict.html",
                               context={"form": form, "data": data})
             except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
-                return render(request, "main/predict_api_page.html",
+                return render(request, "main/predict.html",
                             context={"form": form, "error": f"{type(e)}: {e}"})
     else:
         form = LoanApplicationForm()
