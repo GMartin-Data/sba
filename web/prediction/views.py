@@ -10,7 +10,7 @@ from .forms import LoanApplicationForm
 
 @login_required
 def predict_api_page(request):
-    url = "http://127.0.0.1:8000/predict"
+    url = "http://127.0.0.1:8080/predict"
     session = Session()
 
     # TEMPLATE TO BE ADAPTED
