@@ -3,5 +3,6 @@ fastapi<1
 joblib<2
 pandas<3
 scikit-learn<2
+shap<1
 uvicorn<1
 xgboost<3
