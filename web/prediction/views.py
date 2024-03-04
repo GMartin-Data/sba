@@ -119,7 +119,7 @@ def predict_api_page(request):
                 return render(request, "prediction/predict.html",
                               context={"form": form, "data": data})
             except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
-                return render(request, "main/predict_api_page.html",
+                return render(request, "prediction/predict_api_page.html",
                             context={"form": form, "error": f"{type(e)}: {e}"})
     else:
         form = LoanApplicationForm()
