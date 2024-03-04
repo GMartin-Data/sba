@@ -31,6 +31,7 @@ class FeaturesInput(BaseModel):
 
 class PredictionOutput(BaseModel):
     category: str
+    probability: float
 
 model = load_model()
 
@@ -39,5 +40,5 @@ def prediction_route(feature_input: FeaturesInput):
     # feats have here to be a pandas DataFrame
     # in order for the ColumnTransformer to properly work
     inputs = pd.DataFrame(feature_input.model_dump(), index=[0])
-    prediction = predict(model, inputs)
-    return PredictionOutput(category=prediction)
+    pred, prob = predict(model, inputs)
+    return PredictionOutput(category=pred, probability=prob)
