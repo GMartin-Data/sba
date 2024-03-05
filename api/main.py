@@ -2,6 +2,7 @@ import base64
 from io import BytesIO
 
 from fastapi import FastAPI
+import matplotlib.pyplot as plt
 import pandas as pd
 from pydantic import BaseModel
 import shap
@@ -38,16 +39,21 @@ class PredictionOutput(BaseModel):
     probability: float
     shap_plot: str
 
-model = load_model_and_explainer()
+model, explainer = load_model_and_explainer()
 
 @app.post("/predict")
 def prediction_route(feature_input: FeaturesInput):
     # feats have here to be a pandas DataFrame
     # in order for the ColumnTransformer to properly work
     inputs = pd.DataFrame(feature_input.model_dump(), index=[0])
-    pred, prob, shap_values = predict(model, inputs)
+    pred, prob, shap_values = predict(model,explainer, inputs)
 
     # Create the SHAP Waterfall plot
     shap.plots.waterfall(shap_values[0], show=False)
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    plt.close()
+    buf.seek(0)
+    base64_img = base64.b64encode(buf.read()).decode('utf-8')
 
-    return PredictionOutput(category=pred, probability=prob)
+    return PredictionOutput(category=pred, probability=prob, shap_plot=base64_img)

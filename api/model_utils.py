@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 
 
-def load_model_and_explainer(model_path: str = "model.joblib", explainer_path: str = "explainer.joblib"):
+def load_model_and_explainer(model_path: str = "model2.joblib", explainer_path: str = "explainer.joblib"):
     model = joblib.load(model_path)
     explainer = joblib.load(explainer_path)
     return model, explainer
