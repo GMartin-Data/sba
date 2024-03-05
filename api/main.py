@@ -7,7 +7,7 @@ import pandas as pd
 from pydantic import BaseModel
 import shap
 
-from model_utils import load_model_and_explainer, predict
+from model_utils import load_model, predict
 
 
 app = FastAPI()
@@ -39,7 +39,7 @@ class PredictionOutput(BaseModel):
     probability: float
     shap_plot: str
 
-model, explainer = load_model_and_explainer()
+model= load_model()
 
 @app.post("/predict")
 def prediction_route(feature_input: FeaturesInput):
