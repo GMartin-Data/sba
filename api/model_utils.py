@@ -2,20 +2,26 @@ from typing import Tuple
 
 import joblib
 import pandas as pd
+import shap
 
 
-def load_model_and_explainer(model_path: str = "model2.joblib", explainer_path: str = "explainer.joblib"):
+def load_model(model_path: str = "short.joblib"):
     model = joblib.load(model_path)
-    explainer = joblib.load(explainer_path)
-    return model, explainer
+    return model
 
-def predict(model, explainer, data: pd.DataFrame) -> Tuple[str, float, 'shap_values']:
+
+def predict(model, data: pd.DataFrame) -> Tuple[str, float, 'shap_values']:
     verdict = ["Rejected", "Approved"]
     # Predicted Class
-    pred = model.predict(data)[0]
+    y_pred = model.predict(data)
+    print(f"{y_pred.shape = }")
+    pred = y_pred[0]
     # Associated Probability
     prob = round(model.predict_proba(data)[0][pred] * 100, 2)
     # Generate SHAP values
-    shap_values = explainer(data)
+    data_tr = model[:-1].fit_transform(data, y_pred)
+    print(data_tr)
+    shap_explainer = shap.TreeExplainer(model[-1])
+    shap_ = shap_explainer(data_tr)
 
-    return verdict[pred], prob, shap_values
+    return verdict[pred], prob, shap_

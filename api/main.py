@@ -45,8 +45,12 @@ model, explainer = load_model_and_explainer()
 def prediction_route(feature_input: FeaturesInput):
     # feats have here to be a pandas DataFrame
     # in order for the ColumnTransformer to properly work
-    inputs = pd.DataFrame(feature_input.model_dump(), index=[0])
-    pred, prob, shap_values = predict(model,explainer, inputs)
+    dump = feature_input.model_dump()
+    del dump['ApprovalDoW']
+    del dump['ApprovalMonth']
+    del dump['GrAppv']
+    inputs = pd.DataFrame(dump, index=[0])
+    pred, prob, shap_values = predict(model, inputs)
 
     # Create the SHAP Waterfall plot
     shap.plots.waterfall(shap_values[0], show=False)
