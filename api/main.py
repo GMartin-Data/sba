@@ -48,8 +48,11 @@ def prediction_route(feature_input: FeaturesInput):
     dump = feature_input.model_dump()
     del dump['ApprovalDoW']
     del dump['ApprovalMonth']
-    del dump['GrAppv']
+    del dump['CreateJob']
+    del dump['LowDoc']
     inputs = pd.DataFrame(dump, index=[0])
+    print("=====>", f"{inputs.shape = }")
+    print("=====>", f"{inputs.columns = }")
     pred, prob, shap_values = predict(model, inputs)
 
     # Create the SHAP Waterfall plot
