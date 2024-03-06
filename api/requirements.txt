@@ -1,6 +1,7 @@
 category-encoders<3
 fastapi<1
 joblib<2
+matplotlib<4
 pandas<3
 scikit-learn<2
 shap<1
