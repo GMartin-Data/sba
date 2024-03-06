@@ -93,12 +93,12 @@ def predict_api_page(request):
                 return any(start <= year <= end for start, end in recession_periods)
         
 
-            formulaire = form.cleaned_data
-            print(regions[formulaire["State"]])
-            print(True) if formulaire["State"] == formulaire["BankState"] else print(False)
+            formulaire = form.cleaned_data  # Transform the form to a dict
+            print(f"{regions[formulaire['State']] = }")
+            print(f"{formulaire['State'] == formulaire['BankState'] = }")
 
+            # Update formulaire with created features
             date = datetime.datetime.now()
-
             new_info = {
                 "Region" : regions[formulaire["State"]],
                 "SameState" : True if formulaire["State"] == formulaire["BankState"] else False,
@@ -107,17 +107,17 @@ def predict_api_page(request):
                 "Recession" : is_year_in_recession(date.year)
                 }
             formulaire.update(new_info)
-            print(formulaire)
+            print(f"{formulaire = }")
 
+            # Serialize formulaire to send it to the API
             payload = json.dumps(formulaire)
             
             try:
                 response = session.post(url, data=payload)
-                data = json.loads(response.text)
-                print(response.text)
-                print(data)
+                api_resp = response.json()
+                print(f"{api_resp = }")
                 return render(request, "prediction/predict.html",
-                              context={"form": form, "data": data})
+                              context={"form": form, "api_resp": api_resp})
             except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
                 return render(request, "prediction/predict.html",
                             context={"form": form, "error": f"{type(e)}: {e}"})
