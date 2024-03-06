@@ -95,7 +95,7 @@
                     </div>
                     <button type="submit" class="w-full text-white  bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><h1 class="text-m font-bold leading-tight tracking-tight md:text-xl dark:text-white text-center text-sba-dark-blue ">Predict</h1></button>
                     {% if data %}
-                        <p class="text-center font-bold text-xl {% if data.category == 'Rejected' %}text-red-500{% else %}text-green-500{% endif %}">{{ data.category }}</p>
+                        <p class="text-center font-bold text-xl {% if data.category == 'Rejected' %}text-red-500{% else %}text-green-500{% endif %}">{{ data.category }} with a probability of {{ data.probability }}</p>
                     {% else %}
                         <p class="text-center font-bold text-xl text-black">An error occured. Please retry in a few moments</p>
                     {% endif %}
