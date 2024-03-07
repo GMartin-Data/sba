@@ -28,64 +28,64 @@
                 <form class="space-y-4 md:space-y-6" method="post">
                     {% csrf_token %}
                     <div>
-                        <label for="State" class="block mb-2 text-sm font-medium dark:text-white text-sba-dark-blue">Select your state : </label>
+                        <label for="State" class="tibo-style">Select your state : </label>
                         {{form.State|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:State"}}
                     </div>
                     <div>
-                        <label for="Bank" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Type the name of your Bank : </label>
+                        <label for="Bank" class="tibo-style">Type the name of your Bank : </label>
                         {{form.Bank|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"|attr:"placeholder:Bank"}}
                     </div>
 
                     <div>
-                        <label for="BankState" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select the state of your bank : </label>
+                        <label for="BankState" class="tibo-style">Select the state of your bank : </label>
                         {{form.BankState|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:BankState"}}
                     </div>
                     <div>
-                        <label for="NAICS" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select your business sector : </label>
+                        <label for="NAICS" class="tibo-style">Select your business sector : </label>
                         {{form.NAICS|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NAICS"}}
                     </div>
                     <div>
-                        <label for="Term" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Select the number of months : </label>
+                        <label for="Term" class="tibo-style">Select the number of months : </label>
                         {{form.Term|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-text-sba-dark-blue focus:ring-2 focus:ring-text-sba-dark-blue focus:border-focus:outline-none focus:ring-2 focus:ring-text-sba-dark-blue block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Term"}}
                     </div>
                     <div>
-                        <label for="NewExist" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company new?</label>
+                        <label for="NewExist" class="tibo-style">Is your company new?</label>
                         {{form.NewExist|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NewExist"}}
                     </div>
                     <div>
-                        <label for="NoEmp" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many employees work in your company?</label>
+                        <label for="NoEmp" class="tibo-style">How many employees work in your company?</label>
                         {{form.NoEmp|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NoEmp"}}
                     </div>
                     <div>
-                        <label for="CreateJob" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many jobs do you plan to create?</label>
+                        <label for="CreateJob" class="tibo-style">How many jobs do you plan to create?</label>
                         {{form.CreateJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:CreateJob"}}
                     </div>
                     <div>
-                        <label for="RetainedJob" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">How many employees do you plan to keep?</label>
+                        <label for="RetainedJob" class="tibo-style">How many employees do you plan to keep?</label>
                         {{form.RetainedJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RetainedJob"}}
                     </div>
                     <div>
-                        <label for="Franchise" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company franchised?</label>
+                        <label for="Franchise" class="tibo-style">Is your company franchised?</label>
                         {{form.Franchise|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Franchise"}}
                     </div>
                     <div>
-                        <label for="UrbanRural" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your company's geographical situation urban or rural?</label>
+                        <label for="UrbanRural" class="tibo-style">Is your company's geographical situation urban or rural?</label>
                         {{form.UrbanRural|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:UrbanRural"}}
                     </div>
                     <div>
-                        <label for="RevLineCr" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Is your credit revolving?</label>
+                        <label for="RevLineCr" class="tibo-style">Is your credit revolving?</label>
                         {{form.RevLineCr|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RevLineCr"}}
                     </div>
                     <div>
-                        <label for="LowDoc" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Are you part of the LowDoc program?</label>
+                        <label for="LowDoc" class="tibo-style">Are you part of the LowDoc program?</label>
                         {{form.LowDoc|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:LowDoc"}}
                     </div>
                     <div>
-                        <label for="GrAppv" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Enter the gross amount of loan approved by bank</label>
+                        <label for="GrAppv" class="tibo-style">Enter the gross amount of loan approved by bank</label>
                         {{form.GrAppv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:GrAppv"}}
                     </div>
                     <div>
-                        <label for="SBA_Appv" class="block mb-2 text-sm font-medium text-sba-dark-blue dark:text-white">Enter the gross amount of loan approved by SBA</label>
+                        <label for="SBA_Appv" class="tibo-style">Enter the gross amount of loan approved by SBA</label>
                         {{form.SBA_Appv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:SBA_Appv"}}
                     </div>
                     <div>
