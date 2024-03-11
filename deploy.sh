@@ -1,0 +1,1 @@
+az container create --resource-group RG_MARTING --file deploy.yaml
