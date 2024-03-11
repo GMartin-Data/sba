@@ -281,3 +281,6 @@ pyrightconfig.json
 # Temporary gitignore for merging
 .vscode/
 ml/
+
+# Deploy
+deploy.yaml
