@@ -65,11 +65,14 @@ Ce notebook présente l'ensemble des techniques impliquées dans la conception d
 
 - D'abord, dans une approche _"data-centric"_, une **sélection des features les plus pertinentes** afin d'améliorer le score $F_1$ macro d'un modèle brut (non tuné), par élimination progressive des features (semblable à un `SequentialFeatureSelector`).
 - Ensuite, une **recherche des meilleurs hyperparamètres** à l'aide de `RandomizedSearchCV` (les méthodes bayésiennes à l'aide d'Optuna n'ont pas donné de résultats probants)
+  Le score obtenu sur le _validation set_ était d'environ **96,12%**
 - Enfin, une recherche d'interprétabilité du modèle via deux moyens: les **feature importances** (inhérentes aux modèles d'arbre) et l'exploitation des **Shapley Values** à l'aide de la bibliothèque `shap`.
 
 ## `build_model.py`
 
 Constitue un script permettant d'entraîner, scorer sur le _test set_, puis exporter le modèle réglé sur ses meilleurs hyperparamètres.
+
+Le score obtenu sur notre _test set_ était d'environ **95,5%**.
 
 # Application & API
 
