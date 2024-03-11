@@ -30,21 +30,9 @@ class Naics(Enum):
         return [(member.name, member.value) for member in cls]
 
 
-class RevLineCr(Enum):
-    Y = 'Yes'
-    N = 'No'
-    Unknown = "I don't know"
-
-    @classmethod
-    def choices(cls):
-        # Create a list of tuples in the format Django expects for choices: (value, label)
-        return [(member.name, member.value) for member in cls]
-
-
 class UrbanRural(Enum):
     R = 'Rural'
     U = 'Urban'
-    M = "I don't know"
 
     @classmethod
     def choices(cls):
