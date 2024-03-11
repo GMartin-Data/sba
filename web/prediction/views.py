@@ -1,4 +1,5 @@
 import json
+import os
 
 from django.contrib.auth.decorators import login_required
 from requests import Request, Session
@@ -10,7 +11,7 @@ from .forms import LoanApplicationForm
 
 @login_required
 def predict_api_page(request):
-    url = "http://api:8080/predict"
+    url = os.getenv("URL_API")
     session = Session()
 
     # TEMPLATE TO BE ADAPTED
