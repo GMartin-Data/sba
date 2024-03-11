@@ -22,4 +22,4 @@ EXPOSE 8000
 # Enable launching entrypoint script
 RUN chmod +x /web/entrypoint.sh
 
-CMD ["sh", "/web/entrypoint.sh"]
+ENTRYPOINT ["sh", "/web/entrypoint.sh"]
