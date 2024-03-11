@@ -6,17 +6,20 @@ COPY requirements.txt .
 
 RUN python -m venv venv
 
+# Append Left python from the venv
+ENV PATH="opt/venv/bin:$PATH"
+
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
+# Enable getting logs from Django within the terminal
 ENV PYTHONUNBUFFERED 1
 
 COPY . /web/
 
 EXPOSE 8000
 
-RUN python3 manage.py makemigrations
+# Enable launching entrypoint script
+RUN chmod +x /web/entrypoint.sh
 
-RUN python3 manage.py migrate
-
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["sh", "/web/entrypoint.sh"]
