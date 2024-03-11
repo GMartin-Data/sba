@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   web:
     depends_on:
@@ -10,6 +10,7 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
+    image: gregmdata/django_sba
     volumes:
       - ./web/:/web
   api:
@@ -20,8 +21,9 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
+    image: gregmdata/api_sba
   postgres_db:
-    image: postgres 
+    image: postgres
     restart: always
     env_file:
       - web/.env
