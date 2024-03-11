@@ -12,6 +12,7 @@ from model_utils import load_model, predict
 
 app = FastAPI()
 
+
 class FeaturesInput(BaseModel):
     State: str
     Region: str
@@ -19,8 +20,6 @@ class FeaturesInput(BaseModel):
     BankState: str
     SameState: bool
     NAICS: str
-    ApprovalMonth: int
-    ApprovalDoW: int
     Recession: bool
     Term: int
     NewExist: str
@@ -33,10 +32,12 @@ class FeaturesInput(BaseModel):
     GrAppv: float
     SBA_Appv: float
 
+
 class PredictionOutput(BaseModel):
     category: str
     probability: float
     shap_plot: str
+
 
 model= load_model()
 
@@ -45,12 +46,8 @@ def prediction_route(feature_input: FeaturesInput):
     # feats have here to be a pandas DataFrame
     # in order for the ColumnTransformer to properly work
     dump = feature_input.model_dump()
-    del dump['ApprovalDoW']
-    del dump['ApprovalMonth']
     del dump['CreateJob']
     inputs = pd.DataFrame(dump, index=[0])
-    print("=====>", f"{inputs.shape = }")
-    print("=====>", f"{inputs.columns = }")
     pred, prob, shap_values = predict(model, inputs)
 
     # Create the SHAP Waterfall plot
