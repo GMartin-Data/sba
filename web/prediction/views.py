@@ -100,8 +100,6 @@ def predict_api_page(request):
             new_info = {
                 "Region" : REGIONS[formulaire["State"]],
                 "SameState" : formulaire["State"] == formulaire["BankState"],
-                "ApprovalMonth" : date.month,
-                "ApprovalDoW" : date.weekday(),
                 "Recession" : is_year_in_recession(date.year)
                 }
             formulaire.update(new_info)
