@@ -39,9 +39,9 @@ Docker a permis une conteneurisation des applications, que nous avons également
 
 # Machine Learning
 
-Même si non contraint à des enjeux de conteneurisation, ce folder exploratoire comporte un `requirements.txt` comprenant les principales bibliothèques utilisées.
+Même si non contraint à des enjeux de conteneurisation, ce folder exploratoire comporte un `requirements.txt`, comprenant les principales bibliothèques utilisées.
 
-A noter que l'exploration ayant eu lieu dans l'environnement Jupyter Lab, cette bibliothèque y est proposée.
+A noter que, l'exploration ayant eu lieu dans l'environnement Jupyter Lab, ce package y est proposé en plus des packages nécessaires.
 
 Il est recommandé de recourir à la création d'un environnement virtuel où installer le tout, via:
 
@@ -56,20 +56,20 @@ Contient une exploration sommaire des données brutes
 
 ## `cleaning.ipynb`
 
-Contient un nettoyage en vue de la conception du dataset de base servant à l'entraînement du modèle.
+Contient un nettoyage des données, en vue de la conception du dataset de base, servant à l'entraînement du modèle.
 
 ## `modeling.ipynb`
 
-Après avoir comparé quelques modèles lors d'une pré-analyse, non regroupée ici, nous avons opté pour un modèle `XGBoostClassifier` pour ses performances ainsi que sa relative capacité à être interprété dans une certaine mesure.
-Ce notebook présente l'ensemble des techniques impliquées dans la conception de ce modèle, à savoir
+Après avoir comparé quelques modèles lors d'une pré-analyse, non regroupée ici, nous avons opté pour un modèle `XGBoostClassifier`, pour ses performances ainsi que sa relative capacité à être interprété, dans une certaine mesure.
+Ce notebook présente l'ensemble des techniques impliquées dans la conception de ce modèle, à savoir:
 
-- D'abord, dans une approche _"data-centric"_, une sélection des features les plus pertinentes afin d'améliorer le score $F_1$ macro d'un modèle brut (non tuné), par élimination progressive des features (semblable à un `SequentialFeatureSelector`).
-- Ensuite, une recherche des meilleurs hyperparamètres à l'aide de `RandomizedSearchCV` (les méthodes bayésiennes à l'aide d'Optuna n'ont pas donné de résultats probants)
+- D'abord, dans une approche _"data-centric"_, une **sélection des features les plus pertinentes** afin d'améliorer le score $F_1$ macro d'un modèle brut (non tuné), par élimination progressive des features (semblable à un `SequentialFeatureSelector`).
+- Ensuite, une **recherche des meilleurs hyperparamètres** à l'aide de `RandomizedSearchCV` (les méthodes bayésiennes à l'aide d'Optuna n'ont pas donné de résultats probants)
 - Enfin, une recherche d'interprétabilité du modèle via deux moyens: les **feature importances** (inhérentes aux modèles d'arbre) et l'exploitation des **Shapley Values** à l'aide de la bibliothèque `shap`.
 
 ## `build_model.py`
 
-Constitue un script permettant d'entraîner, scorer sur le test set, puis exporter le modèle réglé sur ses meilleurs hyperparamètres.
+Constitue un script permettant d'entraîner, scorer sur le _test set_, puis exporter le modèle réglé sur ses meilleurs hyperparamètres.
 
 # Application & API
 
