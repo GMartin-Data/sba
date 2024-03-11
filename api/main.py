@@ -30,7 +30,6 @@ class FeaturesInput(BaseModel):
     Franchise: str
     UrbanRural: str
     RevLineCr: str
-    LowDoc: str
     GrAppv: float
     SBA_Appv: float
 
@@ -49,7 +48,6 @@ def prediction_route(feature_input: FeaturesInput):
     del dump['ApprovalDoW']
     del dump['ApprovalMonth']
     del dump['CreateJob']
-    del dump['LowDoc']
     inputs = pd.DataFrame(dump, index=[0])
     print("=====>", f"{inputs.shape = }")
     print("=====>", f"{inputs.columns = }")
