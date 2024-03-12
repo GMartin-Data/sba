@@ -284,3 +284,6 @@ ml/
 
 # Deploy
 deploy.yaml
+
+# eda & modeling
+_eda_modeling/data/
