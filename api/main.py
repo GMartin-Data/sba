@@ -51,9 +51,10 @@ def prediction_route(feature_input: FeaturesInput):
     pred, prob, shap_values = predict(model, inputs)
 
     # Create the SHAP Waterfall plot
+    plt.figure(figsize=(10, 6))
     shap.plots.waterfall(shap_values[0], show=False)
     buf = BytesIO()
-    plt.savefig(buf, format="png")
+    plt.savefig(buf, format="png", bbox_inches="tight")
     plt.close()
     buf.seek(0)
     base64_img = base64.b64encode(buf.read()).decode('utf-8')
