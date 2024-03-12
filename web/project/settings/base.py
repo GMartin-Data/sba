@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'livereload',
     'django.contrib.staticfiles',
     'main',
-    'feats',
     'widget_tweaks',
     'prediction',
 ]
