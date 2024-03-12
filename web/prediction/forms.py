@@ -6,7 +6,7 @@ from .models import LoanApplication
 class LoanApplicationForm(forms.ModelForm):
     class Meta:
         model = LoanApplication
-        exclude = ['Verdict', 'Percentage']
+        fields = '__all__'
         integer_field_name = forms.IntegerField(min_value=0)
 
     def __init__(self, *args, **kwargs):

@@ -91,7 +91,6 @@ def predict_api_page(request):
         form = LoanApplicationForm(request.POST)
         # Check whether it's valid or not
         if form.is_valid():
-            form.save()  # THIS MAY HAVE TO BE MOVED
 
             formulaire = form.cleaned_data  # Transform the form to a dict
 
