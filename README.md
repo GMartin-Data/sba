@@ -89,3 +89,14 @@ L'application et l'API fonctionnent de concert.
 - Ces éléments sont diffusés à l'utilisateur dès le formulaire validé.
 
 ## Installation et Détails Techniques
+
+Quel que soit le mode de lancement, l'application est accessible sur localhost, sur le port `8000`.
+
+### Version Conteneurisée en Local
+
+Lancement à la racine du projet à l'aide de `docker compose up -d`
+
+### Version Déployée
+
+- Lancement à la racine du projet à l'aide de `sh deploy.sh`
+- L'adresse IP publique s'obtient sur l'interface Azure
