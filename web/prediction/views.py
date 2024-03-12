@@ -110,6 +110,12 @@ def predict_api_page(request):
             try:
                 response = session.post(url, data=payload)
                 api_resp = response.json()
+                
+                # Prepare to save the form
+                instance = form.save(commit=False)
+                instance.Verdict = api_resp['category']
+                instance.Percentage = api_resp['probability']
+                instance.save()
                 return render(request, "prediction/predict.html",
                               context={"form": form, "api_resp": api_resp})
             except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
