@@ -1,0 +1,7 @@
+category-encoders<3
+pandas<3
+scikit-learn<2
+seaborn<1
+shap<1
+tqdm<5
+xgboost<3
