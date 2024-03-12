@@ -18,3 +18,6 @@ class LoanApplication(models.Model):
     RevLineCr = models.CharField(max_length=7, choices=YesNo.choices(), null=False, blank=False)
     GrAppv = models.FloatField(null=False, blank=False)
     SBA_Appv = models.FloatField(null=False, blank=False)
+    # Prediction Fields
+    Verdict = models.CharField(max_length=8)
+    Percentage = models.FloatField()
