@@ -92,7 +92,7 @@
                     <button type="submit" class="w-full text-white  bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><h1 class="text-m font-bold leading-tight tracking-tight md:text-xl dark:text-white text-center text-sba-dark-blue ">Predict</h1></button>
                     {% if api_resp %}
                         <p class="text-center font-bold text-xl {% if api_resp.category == 'Rejected' %}text-red-500{% else %}text-green-500{% endif %}">{{ api_resp.category }} with a probability of {{ api_resp.probability }} %</p>
-                        <img src="data:image/png;base64,{{ api_resp.shap_plot }}" alt="SHAP Plot">
+                        <img src="data:image/png;base64,{{ api_resp.shap_plot }}" class="size-9/full" alt="SHAP Plot">
                     {% elif e %}
                         <p class="text-center font-bold text-xl text-black">An error occured. Please retry in a few moments</p>
                     {% endif %}

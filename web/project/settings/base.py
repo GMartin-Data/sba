@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'livereload',
     'django.contrib.staticfiles',
     'main',
     'widget_tweaks',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
     'prediction',
 ]
 
@@ -54,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -184,3 +186,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # Utilisation de variable d'environnement
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # Utilisation de variable d'environnement
+
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+      "127.0.0.1",
+]

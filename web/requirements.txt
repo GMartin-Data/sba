@@ -1,6 +1,7 @@
 django<5
 django-dotenv<2
 django-livereload-server<1
+django-tailwind[reload]
 django-widget-tweaks<2
 gunicorn
 pandas<2
