@@ -44,7 +44,9 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                SbaDarkBlue: 'rgb(0, 46, 109)'
+                SbaDarkBlue: 'rgb(0, 46, 109)',
+                ShapBlue: '#168efa',
+                ShapRed: '#ff2059'
             }
         },
     },
