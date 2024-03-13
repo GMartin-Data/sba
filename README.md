@@ -69,7 +69,7 @@ Ce notebook présente l'ensemble des techniques impliquées dans la conception d
 - D'abord, dans une approche _"data-centric"_, une **sélection des features les plus pertinentes** afin d'améliorer le score $F_1$ macro d'un modèle brut (non tuné), par élimination progressive des features (semblable à un `SequentialFeatureSelector`).
 - Ensuite, une **recherche des meilleurs hyperparamètres** à l'aide de `RandomizedSearchCV` (les méthodes bayésiennes à l'aide d'Optuna n'ont pas donné de résultats probants)
   Le score obtenu sur le _validation set_ était d'environ **96,12%**
-- Enfin, une recherche d'interprétabilité du modèle via deux moyens: les **feature importances** (inhérentes aux modèles d'arbre) et l'exploitation des **Shapley Values** à l'aide de la bibliothèque `shap`.
+- Enfin, une recherche d'interprétabilité du modèle via deux moyens: les **feature importances** (inhérentes aux modèles d'arbre) et l'exploitation des [**Shapley Values**](https://www.youtube.com/watch?v=UJeu29wq7d0) à l'aide de la bibliothèque [`SHAP`](https://shap.readthedocs.io/en/latest/).
 
 ## `build_model.py`
 
@@ -88,8 +88,16 @@ L'application et l'API fonctionnent de concert.
 - L'API sert à l'application un endpoint permettant de récupérer:
   - La prédiction sous forme de `str`: `"Accepted"` ou `"Rejected"`
   - La probabilité correspondante, estimée par le modèle
-  - Un _Waterfall_ plot, correspondant à une interpétation de la prédiction proposée.
+  - Un _Waterfall_ plot, correspondant à une interpétation de la prédiction proposée à l'aide des Shapley values.
 - Ces éléments sont diffusés à l'utilisateur dès le formulaire validé.
+
+> **NOTE**
+>
+> Le Waterfall plot est **une fonctionnalité expérimentale réalisée en plus des attendus du projet** afin d'explorer cette bibliothèque utile pour l'interprétabilité des modèles.
+>
+> Bien évidemment, ce graphe nécessiterait une interaction humaine afin de le rendre intelligible. On ne la soumettrait pas ainsi "brutalement" à un client réel, c'est ici juste un "challenge auto-imposé".
+>
+> Par ailleurs, elle vient _"surcharger"_ l'endpoint de prédiction, ce que nous savons ne pas être une bonne pratique. Il aurait en effet été plus indiqué de réaliser deux endpoints: l'un dédié à la prédiction et l'autre dédié au Waterfall plot, afin de séparer les fonctionnalités. Nous n'avons pas opté pour cela eu égard aux contraintes de temps. Il aurait ainsi simplement fallu, post prédiction, proposer un bouton waterfall permettant, au clic, de requêter l'endpoint Waterfall afin de générer le graphe si souhaité.
 
 ## Installation et Détails Techniques
 
