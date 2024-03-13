@@ -23,11 +23,16 @@ _L’enjeu est de prédire si les entreprises seront capables de rembourser leur
 
 # Organisation du Dépôt Distant
 
+## ⚠️ NOTE
+
+Pour un fonctionnement des Notebooks, un folder `data` doit être créé à l'intérieur du folder `_eda_modeling`.
+A l'intérieur de celui-ci, il faudra télécharger le fichier csv de données `SBAnational.csv`, disponible à ce [**lien**](https://drive.google.com/file/d/12oxHIUwcp-MQGsQXaEIsP8KdZVFpb0na/view)
+
 ## Folders
 
 Le repo comporte trois folders essentiels:
 
-- `machine_learning` contenant les notebooks et scripts dévolus à la conception du modèle
+- `_eda_modeling` contenant les notebooks et scripts dévolus à la conception du modèle
 - `web` contenant la logique de l'application Web, conçue avec Django
 - `api` contenant la logique de l'API, conçue avec FastAPI
 
