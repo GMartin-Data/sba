@@ -11,6 +11,20 @@
 
     {% comment %} <img src="{% static 'img/test5.png' %}" class="bg-cover bg-center w-screen"> {% endcomment %}
     <div class="bg-cover bg-center w-full h-screen" style="background-image: url('{% static 'img/test5.png' %}')"></div>
+    {% comment %} <h1 class="absolute inset-0 flex justify-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-SbaDarkBlue">Ceci est un projet étudiant réalisé par <span class="font-semibold">GregMData</span> & <span class="font-semibold">T7BO</span>.</h1> {% endcomment %}
+    {% comment %} <h1 class="text-container absolute flex justify-center top-1/2 left-1/2 transform -translate-x-1/2 translate-y-52 text-SbaDarkBlue">
+        <span class="typing-text">Ceci est un projet étudiant réalisé par <span class="font-semibold"> GregMData </span> & <span class="font-semibold">T7BO</span>.</span>
+    </h1> {% endcomment %}
+    <div class="absolute inset-0 flex justify-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="text-container absolute flex justify-center top-1/2 left-1/2 transform -translate-x-1/2 translate-y-52">
+            <h1 class="animate-typing overflow-hidden whitespace-nowrap pr-5 text-SbaDarkBlue">
+                <span>Ceci est un projet étudiant réalisé par <span class="font-semibold">GregMData</span> & <span class="font-semibold">T7BO</span>.</span>
+            </h1>
+    </div>
+    </div>
+
+
+    
 
 </body>
 {% endblock content %}
