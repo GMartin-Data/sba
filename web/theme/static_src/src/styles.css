@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.clicked {
+    @apply text-white rounded px-3 bg-SbaDarkBlue;
+}
