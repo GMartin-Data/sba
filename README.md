@@ -6,7 +6,7 @@ Ce projet a été réalisé dans le cadre de la formation Développeur Data/IA E
 
 # Contributeurs
 
-- Thibaut Watu
+- Thibaut Wattu
 - Grégory Martin
 
 # Description
