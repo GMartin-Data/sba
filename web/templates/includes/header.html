@@ -1,5 +1,7 @@
-{% load tailwind_tags %} {% url "about" as about%} {% url "home" as home %} {%
-url "predict" as predict %}
+{% load tailwind_tags %} 
+{% url "about" as about%}
+{% url "home" as home %} 
+{% url "predict" as predict %}
 
 <header class="">
   <div
@@ -27,8 +29,9 @@ url "predict" as predict %}
       id="menu"
       class="hidden flex flex-col items-center absolute top-0 w-full z-20 gap-4 py-5 bg-[#fafafa] font-semibold"
     >
-      {% include "includes/logo_wm.html" %} {% include "includes/navlinks.html"
-      %} {% include "includes/login_logout.html" %}
+      {% include "includes/logo_wm.html" %}
+      {% include "includes/navlinks.html" %} 
+      {% include "includes/login_logout.html" %}
     </div>
   </div>
 </header>
