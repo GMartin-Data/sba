@@ -40,7 +40,7 @@ Le repo comporte trois folders essentiels:
 
 A noter que, bien que Django embarque nativement SQLite3 comme solution BDD, nous avons, par souci pédagogique, implémenté la BDD sous PostgreSQL également.
 
-Docker a permis une conteneurisation des applications, que nous avons également déployé sur Azure, en utilisant les services associés.
+Docker a permis une conteneurisation des applications, que nous avons également déployées sur Azure, en utilisant les services associés.
 
 # Machine Learning
 
