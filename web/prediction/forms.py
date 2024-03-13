@@ -18,7 +18,7 @@ class LoanApplicationForm(forms.ModelForm):
                     attrs={'class': 'focus:border-text-sba-dark-blue focus:outline-none focus:ring-1 focus:ring-text-sba-dark-blue'})
             elif isinstance(self.fields[field_name], forms.FloatField):
                 self.fields[field_name].widget = forms.NumberInput(
-                    attrs={'class': 'focus:border-text-sba-dark-blue focus:outline-none focus:ring-1 focus:ring-text-sba-dark-blue', 'min': 0})
+                    attrs={'class': 'focus:border-text-sba-dark-blue focus:outline-none focus:ring-2', 'min': 0})
             elif isinstance(self.fields[field_name], forms.IntegerField):
                 self.fields[field_name].widget = forms.NumberInput(
                     attrs={'class': 'focus:border-text-sba-dark-blue focus:outline-none focus:ring-1 focus:ring-text-sba-dark-blue', 'min': 0})
