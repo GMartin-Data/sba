@@ -99,6 +99,21 @@ L'application et l'API fonctionnent de concert.
 >
 > Par ailleurs, elle vient _"surcharger"_ l'endpoint de prédiction, ce que nous savons ne pas être une bonne pratique. Il aurait en effet été plus indiqué de réaliser deux endpoints: l'un dédié à la prédiction et l'autre dédié au Waterfall plot, afin de séparer les fonctionnalités. Nous n'avons pas opté pour cela eu égard aux contraintes de temps. Il aurait ainsi simplement fallu, post prédiction, proposer un bouton waterfall permettant, au clic, de requêter l'endpoint Waterfall afin de générer le graphe si souhaité.
 
+## Description du Waterfall Plot
+
+<a href="https://ibb.co/h98YVkd"><img src="https://i.ibb.co/mTzN4my/waterfall-readme.png" alt="waterfall-readme" border="0"></a>
+
+Expliquons rapidement quelques éléments de ce graphe à première vue plutôt complexe.
+
+- (1) désigne la Shapley value à priori
+- (2) ceci désigne la Shapley value de notre sample.
+  Simplement, plus la Shapley value est élevée, plus la prédiction sera positive (i.e: sa probabilité d'être positive augmente), et vice-versa.
+- (3) vous trouvez ici les noms des features influençant le plus la prédiction.
+- Notez que le display de base les cantonne à 10, et qu'ici l'influence des 29 features les moins importantes a été résumée dans la dernière entrée en bas.
+- Notez aussi que ces features sont classées par ordre décroissant d'influence (en valeur absolue). Ainsi, la feature influençant le plus la prédiction est `Bank` avec -0.44, puis c'est `Term` avec +0.43...
+- Ainsi, les features dirigent la prédiction vers la gauche (flêche bleue, valeurs négatives) soit la prédiction de la classe 0 (`ChgOff`, donc "Rejected") ou vers la droite (flêche rouge, valeurs positives) soit la prédiction de la classe 1 (`P I F`, donc "Approved").
+- Enfin, remarquez que ces flêches vous indiquent comment on se déplace de l'à priori de départ (1) à la prédiction actuelle (2)
+
 ## Installation et Détails Techniques
 
 Quel que soit le mode de lancement, l'application est accessible sur localhost, sur le port `8000`.
