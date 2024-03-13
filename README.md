@@ -46,8 +46,6 @@ Docker a permis une conteneurisation des applications, que nous avons également
 
 Même si non contraint à des enjeux de conteneurisation, ce folder exploratoire comporte un `requirements.txt`, comprenant les principales bibliothèques utilisées.
 
-A noter que, l'exploration ayant eu lieu dans l'environnement Jupyter Lab, ce package y est proposé en plus des packages nécessaires.
-
 Il est recommandé de recourir à la création d'un environnement virtuel où installer le tout, via:
 
 - `python3 -m venv venv`
@@ -57,7 +55,7 @@ Une présentation succinte des différents notebooks:
 
 ## `eda.ipynb`
 
-Contient une exploration sommaire des données brutes
+Contient une exploration graphique des données brutes, sous divers angles, notamment des graphes interactifs réalisés avec plotly.
 
 ## `cleaning.ipynb`
 
