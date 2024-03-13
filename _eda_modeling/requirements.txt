@@ -1,0 +1,10 @@
+category-encoders<3
+nformat
+pandas<3
+plotly<6
+pyarrow<16
+scikit-learn<2
+seaborn<1
+shap<1
+tqdm<5
+xgboost<3

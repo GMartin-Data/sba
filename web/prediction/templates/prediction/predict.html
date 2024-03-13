@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% load static widget_tweaks %}
+
+{% block content %}
+
+{% comment %} <form action="." method="post">
+
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="prediction">
+
+</form> {% endcomment %}
+
+<section class="bg-gray-50 dark:bg-gray-900 py-10">
+    <div class="flex flex-col items-center justify-center gap-6 mb-6 md:grid-cols-2 focus:ring-green-600 focus:border-green-600">
+
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-2xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div class="flex flex-col items-center justify-self-center justify-center justify-items-center content-center items-center self-center">
+                <a href="#" class="mb-6 font-semibold dark:text-white text-center text-white">
+                    {% comment %} <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"> {% endcomment %}
+                    {% include "includes/logo_sba.html"  %}</a>
+                
+        <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl dark:text-white text-center text-sba-dark-blue ">
+            Loan Repayment Simulation
+                </h1></div>
+                <form class="space-y-4 md:space-y-6" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label for="State" class="tibo-style">Select your state : </label>
+                        {{form.State|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:State"}}
+                    </div>
+                    <div>
+                        <label for="Bank" class="tibo-style">Type the name of your Bank : </label>
+                        {{form.Bank|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"|attr:"placeholder:Bank"}}
+                    </div>
+
+                    <div>
+                        <label for="BankState" class="tibo-style">Select the state of your bank : </label>
+                        {{form.BankState|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:BankState"}}
+                    </div>
+                    <div>
+                        <label for="NAICS" class="tibo-style">Select your business sector : </label>
+                        {{form.NAICS|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NAICS"}}
+                    </div>
+                    <div>
+                        <label for="Term" class="tibo-style">Select the number of months : </label>
+                        {{form.Term|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-text-sba-dark-blue focus:ring-2 focus:ring-text-sba-dark-blue focus:border-focus:outline-none focus:ring-2 focus:ring-text-sba-dark-blue block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Term"}}
+                    </div>
+                    <div>
+                        <label for="NewExist" class="tibo-style">Is your company new?</label>
+                        {{form.NewExist|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NewExist"}}
+                    </div>
+                    <div>
+                        <label for="NoEmp" class="tibo-style">How many employees work in your company?</label>
+                        {{form.NoEmp|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:NoEmp"}}
+                    </div>
+                    <div>
+                        <label for="CreateJob" class="tibo-style">How many jobs do you plan to create?</label>
+                        {{form.CreateJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:CreateJob"}}
+                    </div>
+                    <div>
+                        <label for="RetainedJob" class="tibo-style">How many employees do you plan to keep?</label>
+                        {{form.RetainedJob|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RetainedJob"}}
+                    </div>
+                    <div>
+                        <label for="Franchise" class="tibo-style">Is your company franchised?</label>
+                        {{form.Franchise|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:Franchise"}}
+                    </div>
+                    <div>
+                        <label for="UrbanRural" class="tibo-style">Is your company's geographical situation urban or rural?</label>
+                        {{form.UrbanRural|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:UrbanRural"}}
+                    </div>
+                    <div>
+                        <label for="RevLineCr" class="tibo-style">Is your credit revolving?</label>
+                        {{form.RevLineCr|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:RevLineCr"}}
+                    </div>
+                    <div>
+                        <label for="GrAppv" class="tibo-style">Enter the gross amount of loan approved by bank</label>
+                        {{form.GrAppv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:GrAppv"}}
+                    </div>
+                    <div>
+                        <label for="SBA_Appv" class="tibo-style">Enter the gross amount of loan approved by SBA</label>
+                        {{form.SBA_Appv|add_class:"bg-gray-50 border border-gray-300 text-sba-blue sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"|attr:"placeholder:SBA_Appv"}}
+                    </div>
+                    <div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full text-white  bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><h1 class="text-m font-bold leading-tight tracking-tight md:text-xl dark:text-white text-center text-sba-dark-blue ">Predict</h1></button>
+                    {% if api_resp %}
+                        <p class="text-center font-bold text-xl {% if api_resp.category == 'Rejected' %}text-ShapBlue{% else %}text-ShapRed{% endif %}">{{ api_resp.category }} with a probability of {{ api_resp.probability }} %</p>
+                        <img src="data:image/png;base64,{{ api_resp.shap_plot }}" class="size-9/full" alt="SHAP Plot">
+                    {% elif e %}
+                        <p class="text-center font-bold text-xl text-black">An error occured. Please retry in a few moments</p>
+                    {% endif %}
+                </form>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

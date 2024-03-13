@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tibo-style {
+    @apply block mb-2 text-sm font-medium dark:text-white text-sba-dark-blue;
+}
+

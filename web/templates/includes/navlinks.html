@@ -1,0 +1,9 @@
+{% if request.path == about %}
+<a href="{{ about }}" class="clicked">{{ Link1 }}</a>
+{% else %}
+<a href="{{ about }}">{{ Link1 }}</a>
+{% endif %} {% if request.path == predict %}
+<a href="{{ predict }}" class="clicked">{{ Link2 }}</a>
+{% else %}
+<a href="{{ predict }}">{{ Link2 }}</a>
+{% endif %}
