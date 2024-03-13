@@ -84,7 +84,7 @@ Le score obtenu sur notre _test set_ était d'environ **95,5%**.
 L'application et l'API fonctionnent de concert.
 
 - L'utilisateur utilise l'application grâce au lien `Make Predictions` accessible via la navbar du header.
-- Il soit alors s'acquitter de soumettre un formulaire correspondant aux détails administratifs en vue de l'obtention du prêt.
+- Il soit alors s'acquitter de soumettre un formulaire correspondant aux détails administratifs en vue de l'obtention du prêt, puis clique sur **Predict**.
 - L'API sert à l'application un endpoint permettant de récupérer:
   - La prédiction sous forme de `str`: `"Accepted"` ou `"Rejected"`
   - La probabilité correspondante, estimée par le modèle
