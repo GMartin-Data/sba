@@ -19,5 +19,5 @@ class LoanApplication(models.Model):
     GrAppv = models.FloatField(null=False, blank=False)
     SBA_Appv = models.FloatField(null=False, blank=False)
     # Prediction Fields
-    Verdict = models.CharField(null=True, blank=True)
+    Verdict = models.CharField(max_length=10, null=True, blank=True)
     Percentage = models.FloatField(null=True, blank=True)
