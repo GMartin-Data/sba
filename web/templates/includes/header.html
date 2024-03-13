@@ -5,17 +5,21 @@
 {% url "home" as home %}
 {% url "predict" as predict %}
 
-<header>
-    <div class="border border-bg-sba-grey rounded">
-        <nav class='hidden md:flex justify-between items-center max-w-6xl mx-auto px-6 h-16 source-sans-3-600 text-gray-800 bg-red'>
-            {% include "includes/logo_wm.html" %}
-            <div class="flex gap-x-4 lg:gap-x-12">
+<header class="">
+    <div class="fixed top-0 left-0 w-full z-50 border border-gray-300 rounded bg-[#fafafa]">
+        <nav class='hidden flex-row md:flex justify-between items-center max-w-6xl mx-auto px-6 h-16 source-sans-3-600 text-gray-800 bg-red'>
+            <div>
+                {% include "includes/logo_wm.html" %}
+            </div>
+            <div class="flex gap-x-4 lg:gap-x-12 justify-between">
                 {% include "includes/navlinks.html" %}
             </div>
-            {% include "includes/login_logout.html" %}
+            <div>
+                {% include "includes/login_logout.html" %}
+            </div>
         </nav>
         <!-- Hamburger -->
-        <div class="md:hidden flex justify-end mx-auto p-6 bg-slate-300">
+        <div class="md:hidden flex justify-end mx-auto p-6 bg-[#fafafa]">
             <div id="hamburger" class="w-6 space-y-1 z-30">
                 <div class="h-1 bg-black"></div>
                 <div class="h-1 bg-black"></div>
@@ -23,7 +27,7 @@
             </div>
         </div>
         <!-- Menu -->
-        <div id="menu" class='hidden flex flex-col items-center absolute top-0 w-full z-20 gap-4 py-5 bg-slate-300'>
+        <div id="menu" class='hidden flex flex-col items-center absolute top-0 w-full z-20 gap-4 py-5 bg-[#fafafa] font-semibold'>
             {% include "includes/logo_wm.html" %}
             {% include "includes/navlinks.html" %}
             {% include "includes/login_logout.html" %}
